@@ -7,19 +7,29 @@
     <title>Welcome to hacker news </title>
 </head>
 <body>
-    
-<h1><%= title %></h1>
+        <a href='/articles/add'> Add articles</a>    
+<h1><%= title%></h1>
 
 
 <ol>
-<% links.forEach(function(data){ %>
-  
-    <li><%=data.link %> </li>
 
-        <%=data.author%>
+    <% links.forEach(function(data){ %>
+  
+   
+  <li>  <a href='/links/<%=data._id %>'>
+ 
+           <%=data.link %>
+        </a>
+    <a href='/posts/<%=data._id %>'>
+    <h5>Comments</h5></a>
+</li>
+    
+    AUTHOR:    <%=data.author%>
+    <hr>
    
     <% }) %>
 </ol>
-<a href='/articles/add'> Add articles</a>
+
+
 </body>
 </html>

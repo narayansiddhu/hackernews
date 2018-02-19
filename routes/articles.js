@@ -3,10 +3,15 @@ const express = require('express');
 //routes to it using the get() method. 
 //Last of all the module exports the Router object
 const router = express.Router();
+
+ 
 // Article Model
 let Article = require('../models/links');
 // User Model
 //let User = require('../models/user');
+
+
+
 router.get('/add',function(req,res){
     res.render('add_articles',{
         title:'Add Articles'
@@ -17,9 +22,15 @@ Article({
     link: req.body.titles,
     author:req.body.bodies
 }).save(function(err,doc){
-    if(err)res.json(err);
-    else res.send('success');
+    if(err) res.json(err);
+    else res.redirect('/');
+    
 });
     
 });
+
+
+
+// Get Single Article
+
 module.exports = router;

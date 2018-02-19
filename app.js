@@ -4,7 +4,7 @@ var path = require('path');
 var bodyparser = require('body-parser');
 var mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/hackernews');
+mongoose.connect('mongodb://localhost/sidhacker');
 
 var db = mongoose.connection;
 
@@ -41,6 +41,17 @@ app.get('/',function(req,res){
         }
     })
 });
+app.get('/posts/:id', function(req, res){
+ Links.findById(req.params.id, function(err, articles){
+    Links.findById(req.params.id, function(err, authors){
+       res.render('article', {
+              articles:articles,
+              authors:authors
+            });
+    });
+});
+     });
+
 var articles = require('./routes/articles');
 app.use('/articles', articles);
 
