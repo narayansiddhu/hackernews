@@ -16,7 +16,7 @@ db.on('error',function(){
 })
 var app = express();
 
-
+let Comment = require('./models/comment');
 var Links = require('./models/links');
 // creating the view engine 
  app.set('view engine','ejs');
@@ -51,6 +51,19 @@ app.get('/posts/:id', function(req, res){
     });
 });
      });
+
+     app.post('/posts/:id', function (req, res) {
+        // INSTANTIATE INSTANCE OF MODEL
+        const comment = new Comment(req.body)
+      
+        // SAVE INSTANCE OF Comment MODEL TO DB
+        comment.save().then((comment) => {
+          // REDIRECT TO THE ROOT
+          return res.redirect(`/`)
+        }).catch((err) => {
+          console.log(err);
+        })
+      })
 
 var articles = require('./routes/articles');
 app.use('/articles', articles);

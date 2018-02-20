@@ -4,7 +4,7 @@ const express = require('express');
 //Last of all the module exports the Router object
 const router = express.Router();
 
- 
+ let comment = require('../models/comment');
 // Article Model
 let Article = require('../models/links');
 // User Model
@@ -28,9 +28,19 @@ Article({
 });
     
 });
+// CREATE Comment
+router.post('/posts/:articleId', function (req, res) {
+    // INSTANTIATE INSTANCE OF MODEL
+    const comment = new Comment(req.body)
+  
+    // SAVE INSTANCE OF Comment MODEL TO DB
+    comment.save().then((comment) => {
+      // REDIRECT TO THE ROOT
+      return res.redirect(`/`)
+    }).catch((err) => {
+      console.log(err);
+    })
+  })
 
-
-
-// Get Single Article
 
 module.exports = router;

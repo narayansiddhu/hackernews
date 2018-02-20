@@ -15,11 +15,12 @@
 <!-- //heli -->
     <% links.forEach(function(data){ %>
   
-   
+   <!-- this is for the title to open that particular title -->
   <li>  <a href='/links/<%=data._id %>'>
  
            <%=data.link %>
         </a>
+        <!-- This is for to open comments  -->
     <a href='/posts/<%=data._id %>'>
     <h5>Comments</h5></a>
 </li>

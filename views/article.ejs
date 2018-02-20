@@ -12,13 +12,13 @@
         <h1><%=articles.link%></h1>
         <h4><%=authors.author%></h4>
         <hr>
-        
+       
         <form action="/posts/<%=articles._id%>"  method="POST">
-            <input type="hidden" name="post_id" id="post_id">
-            <textarea name="postComment" id="postComment" cols="70" rows="5"></textarea>
-            <br>
-            <input type="submit" value="add comment" id="addComment">
-        </form>
+            <textarea class='form-control' name="content" placeholder="Comment"  cols="70" rows="5" ></textarea>
+            <div class="text-right">
+      <button type="submit">Submit</button>
+    </div>
+  </form>
                     
        
   
